@@ -1,8 +1,11 @@
 'use strict';
 
-import storage from '../lib/storage/storage.js';
+import storage from '../lib/storage/memory.js';
+// import storage from 'fileStorage';
+// import storage from 'mongostuff';
 
-class Notes {
+
+class Users {
 
   static findOne(id) {
     let query = { _id:id };
@@ -32,4 +35,6 @@ class Notes {
 
 }
 
-export default Notes;
+export default Users;
+
+
