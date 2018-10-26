@@ -32,7 +32,7 @@ describe('api server', () => {
 
   });
 
-  it('should respond proprly on request to /api/v1/notes', () => {
+  it('should respond properly on request to /api/v1/notes', () => {
 
     return mockRequest
       .get('/api/v1/notes')
