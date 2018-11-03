@@ -2,7 +2,7 @@
 
 import express from 'express';
 
-import notes from '../models/notes.js';
+//import notes from '../models/notes.js';
 
 const router = express.Router();
 
@@ -14,7 +14,13 @@ let sendJSON = (data,response) => {
   response.end();
 };
 
-router.get('/api/v1/notes', (request,response,next) => {
+const notes = {};
+
+router.param('model', (req,res,next) => {
+  console.log('You want to use', req.params.model);
+});
+
+router.get('/api/v1/:model', (request,response,next) => {
   notes.find()
     .then( data => {
       const output = {
@@ -26,31 +32,31 @@ router.get('/api/v1/notes', (request,response,next) => {
     .catch( next );
 });
 
-router.get('/api/v1/notes/:id', (request,response,next) => {
+router.get('/api/v1/:model/:id', (request,response,next) => {
   notes.find({_id:request.params.id})
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.post('/api/v1/notes', (request,response,next) => {
+router.post('/api/v1/:model', (request,response,next) => {
   notes.save(request.body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.put('/api/v1/notes/:id', (request,response,next) => {
+router.put('/api/v1/:model/:id', (request,response,next) => {
   notes.put(request.params.id, request.body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.patch('/api/v1/notes/:id', (request,response,next) => {
+router.patch('/api/v1/:model/:id', (request,response,next) => {
   notes.patch(request.params.id, request.body)
     .then( result => sendJSON(result, response) )
     .catch( next );
 });
 
-router.delete('/api/v1/notes/:id', (request,response,next) => {
+router.delete('/api/v1/:model/:id', (request,response,next) => {
   notes.delete(request.params.id)
     .then( result => sendJSON(result, response) )
     .catch( next );

@@ -1,3 +1,10 @@
+[![Build Status](https://www.travis-ci.com/edpuzino/lab-08.svg?branch=master)](https://www.travis-ci.com/edpuzino/lab-08)
+
+
+https://ed-lab-08.herokuapp.com/
+
+
+
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB - Express Routing & Middleware
 =======================================================
 
